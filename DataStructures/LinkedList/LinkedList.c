@@ -195,9 +195,9 @@ void llist_print(LinkedList* llist)
     printf("\n");
 }
 
-void llist_delete(LinkedList** llist)
+void llist_delete(LinkedList* llist)
 {
-    LinkedListNode* curr_node = (*llist)->head;
+    LinkedListNode* curr_node = llist->head;
 
     while (curr_node)
     {
@@ -206,5 +206,5 @@ void llist_delete(LinkedList** llist)
         curr_node = next_node;
     }
 
-    free(*llist);
+    free(llist);
 }

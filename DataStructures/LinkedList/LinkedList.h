@@ -30,6 +30,6 @@ int llist_get(LinkedList* llist, size_t index, short* elem);
 
 void llist_print(LinkedList* llist);
 
-void llist_delete(LinkedList** llist);
+void llist_delete(LinkedList* llist);
 
 #endif
