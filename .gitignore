@@ -1,3 +1,4 @@
 bin
 main.c
 *.bat
+mem_debugger.*

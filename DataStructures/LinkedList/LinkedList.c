@@ -194,3 +194,17 @@ void llist_print(LinkedList* llist)
     }
     printf("\n");
 }
+
+void llist_delete(LinkedList** llist)
+{
+    LinkedListNode* curr_node = (*llist)->head;
+
+    while (curr_node)
+    {
+        LinkedListNode* next_node = curr_node->ptr_next;
+        free(curr_node);
+        curr_node = next_node;
+    }
+
+    free(*llist);
+}
