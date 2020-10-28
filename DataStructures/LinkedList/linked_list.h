@@ -28,6 +28,9 @@ int llist_remove(LinkedList* llist, short elem);
 int llist_contains(LinkedList* llist, short elem);
 short llist_get(LinkedList* llist, size_t index);
 
+short llist_front(LinkedList* llist);
+short llist_back(LinkedList* llist);
+
 void llist_print(LinkedList* llist);
 
 void llist_delete(LinkedList* llist);

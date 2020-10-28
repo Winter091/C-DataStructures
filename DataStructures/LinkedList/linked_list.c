@@ -174,6 +174,18 @@ short llist_get(LinkedList* llist, size_t index)
     }
 }
 
+short dllist_front(LinkedList* llist)
+{
+    if (!llist->size) return 0;
+    return list->head->data;
+}
+
+short dllist_back(LinkedList* llist)
+{
+    if (!llist->size) return 0;
+    return list->tail->data;
+}
+
 void llist_print(LinkedList* llist)
 {
     LinkedListNode* curr_node = llist->head;
