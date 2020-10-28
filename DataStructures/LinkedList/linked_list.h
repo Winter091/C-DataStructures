@@ -22,11 +22,11 @@ LinkedList* llist_create();
 void llist_push_back(LinkedList* llist, short elem);
 void llist_push_front(LinkedList* llist, short elem);
 
-int llist_pop_front(LinkedList* llist, short* elem);
+short llist_pop_front(LinkedList* llist);
 int llist_remove(LinkedList* llist, short elem);
 
 int llist_contains(LinkedList* llist, short elem);
-int llist_get(LinkedList* llist, size_t index, short* elem);
+short llist_get(LinkedList* llist, size_t index);
 
 void llist_print(LinkedList* llist);
 

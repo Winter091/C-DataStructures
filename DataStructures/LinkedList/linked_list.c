@@ -1,6 +1,5 @@
-#include "LinkedList.h"
+#include "linked_list.h"
 
-#include "stdlib.h"
 #include "stdio.h"
 
 LinkedList* llist_create()
@@ -42,14 +41,12 @@ void llist_push_front(LinkedList* llist, short elem)
     node->data = elem;
     node->ptr_next = NULL;
 
-    // size = 0
-    if (!llist->head)
+    if (!llist->size)
     {
         llist->head = node;
         llist->tail = node;
     }
 
-    // size > 0
     else
     {
         LinkedListNode* prev_head = llist->head;
@@ -60,28 +57,27 @@ void llist_push_front(LinkedList* llist, short elem)
     llist->size++;
 }
 
-int llist_pop_front(LinkedList* llist, short* elem)
+short llist_pop_front(LinkedList* llist)
 {
     if (llist->size == 0) return 0;
 
     if (llist->size == 1)
     {
-        *elem = llist->head->data;
+        short elem = llist->head->data;
         free(llist->head);
         llist->head = NULL;
         llist->tail = NULL;
         llist->size = 0;
-        return 1;
+        return elem;
     }
 
-
     // size > 1
-    *elem = llist->head->data;
+    short elem = llist->head->data;
     LinkedListNode* prev_head = llist->head;
     llist->head = llist->head->ptr_next;
     llist->size--;
     free(prev_head);
-    return 1;
+    return elem;
 }
 
 int llist_remove(LinkedList* llist, short elem)
@@ -157,19 +153,16 @@ int llist_contains(LinkedList* llist, short elem)
     return curr_node ? 1 : 0;
 }
 
-int llist_get(LinkedList* llist, size_t index, short* elem)
+short llist_get(LinkedList* llist, size_t index)
 {
     if (index + 1 >= llist->size)
-    {
-        elem = NULL;
         return 0;
-    }
 
     if (index == 0)
-        *elem = llist->head->data;
+        return llist->head->data;
 
     else if (index == llist->size - 1)
-        *elem = llist->tail->data;
+        return llist->tail->data;
 
     else
     {
@@ -177,10 +170,8 @@ int llist_get(LinkedList* llist, size_t index, short* elem)
         while (index--)
             curr_node = curr_node->ptr_next;
 
-        *elem = curr_node->data;
+        return curr_node->data;
     }
-
-    return 1;
 }
 
 void llist_print(LinkedList* llist)
